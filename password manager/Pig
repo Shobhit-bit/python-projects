@@ -1,0 +1,47 @@
+#                                                                           ####Pig game####
+import sys
+def win():
+    sc=0
+    if (p1 >=50):
+        print('player 1 won')
+        sys.exit()
+    elif(p2 >=50):
+        print('player 2 won')
+        sys.exit()   
+import random
+p1= 0
+p2 = 0
+sc=0
+while True:
+    win()
+    print('player 1 score ',p1)
+    while True:
+        print('player 1 turn')
+        rol = random.randint(1,6)
+        print('the dice rolled to',rol)
+        inp = input('do you want play(y/n)')
+        if (rol==1):
+            sc=0
+            rol=0
+        sc+=rol
+        if (inp=='y'):
+            pass
+        elif (inp=="n"):
+            p1+=sc
+            break
+    print('player 2 score',p2)
+    win()
+    while True:
+        print('player 2 turn')
+        rol = random.randint(1,6)
+        print('the dice rolled to',rol)
+        inp = input('do you want play(y/n)')
+        if (rol==1):
+            sc=0
+            rol=0
+        sc+=rol
+        if (inp=='y'):
+            pass
+        elif (inp=="n"):
+            p2+=sc
+            break
