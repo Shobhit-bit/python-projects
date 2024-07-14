@@ -45,3 +45,32 @@ while True:
         elif (inp=="n"):
             p2+=sc
             break
+#                                                  ######Timed math change########
+import random
+import time
+op = ['+','-','*']
+ans=0
+def ranq():
+    f = random.randint(3,12)
+    l=random.randint(3,12)
+    o = random.choice(op)
+    epr = str(f) + o + str(l)
+    ans = eval(epr)
+    print(epr)
+    return (ans)
+input('press any key to start (press q end)')
+st =time.time()
+w=0
+tot=0
+while True:
+    ans = ranq()
+    a = (input('enter your answer'))
+    if (a=="q"):
+        break
+    elif (int(a)!=ans):
+        w+=1
+    tot+=1
+et=time.time()
+print(f'you solved {tot} question,out of which {w} where wrong and completed in {et-st} seconds')
+
+
