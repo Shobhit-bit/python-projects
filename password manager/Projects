@@ -1,0 +1,168 @@
+#                                                                           ####Pig game####
+import sys
+def win():
+    sc=0
+    if (p1 >=50):
+        print('player 1 won')
+        sys.exit()
+    elif(p2 >=50):
+        print('player 2 won')
+        sys.exit()   
+import random
+p1= 0
+p2 = 0
+sc=0
+while True:
+    win()
+    print('player 1 score ',p1)
+    while True:
+        print('player 1 turn')
+        rol = random.randint(1,6)
+        print('the dice rolled to',rol)
+        inp = input('do you want play(y/n)')
+        if (rol==1):
+            sc=0
+            rol=0
+        sc+=rol
+        if (inp=='y'):
+            pass
+        elif (inp=="n"):
+            p1+=sc
+            break
+    print('player 2 score',p2)
+    win()
+    while True:
+        print('player 2 turn')
+        rol = random.randint(1,6)
+        print('the dice rolled to',rol)
+        inp = input('do you want play(y/n)')
+        if (rol==1):
+            sc=0
+            rol=0
+        sc+=rol
+        if (inp=='y'):
+            pass
+        elif (inp=="n"):
+            p2+=sc
+            break
+#                                                  ######Timed math change########
+import random
+import time
+op = ['+','-','*']
+ans=0
+def ranq():
+    f = random.randint(3,12)
+    l=random.randint(3,12)
+    o = random.choice(op)
+    epr = str(f) + o + str(l)
+    ans = eval(epr)
+    print(epr)
+    return (ans)
+input('press any key to start (press q end)')
+st =time.time()
+w=0
+tot=0
+while True:
+    ans = ranq()
+    a = (input('enter your answer'))
+    if (a=="q"):
+        break
+    elif (int(a)!=ans):
+        w+=1
+    tot+=1
+et=time.time()
+print(f'you solved {tot} question,out of which {w} where wrong and completed in {et-st} seconds')
+#                                                                               Password manager
+import sys
+from cryptography.fernet import Fernet
+def write_key():
+    k = Fernet.generate_key()
+    with open('key.key','wb') as kfile:
+        kfile.write(key)
+def load_key():
+    return open('key.key','rb').read()
+def ad():
+    acc=input('Enter the account number')
+    pas = input('Enter  the password')
+    with open('FILE.txt','a') as f:
+        f.write(acc+ ' ' + pas)
+def vie():
+    with open('file.txt','r') as f:
+        a = f.readlines()
+    for b in a:
+        u ,p = b.split()
+        print(f'account {u} password {p}')
+while True:
+    pwd = str(input('enter the password(enter q for exit)'))
+    if (pwd=='haha'):
+        print('welcome')
+        break
+    elif (pwd=='q'):
+        sys.exit()    
+    else:
+        print('aap galat hai')
+        continue
+fun = input('What you what to do(add/view)')
+if (fun=='add'):
+    ad()
+elif (fun=='view'):
+    vie()
+else:
+    print('enter a valid thing')
+#                                                                  ####turtle racing####
+from mimetypes import init
+import turtle
+import random
+import time
+
+width , height = 500,500
+def khiladi_pucho():
+    while True:
+        racers= input('Enter the number of racer between 2 - 10')
+        if racers.isdigit():
+            racers = int(racers)
+            if (2<= racers <= 10):
+                break
+            else:
+                print('enter a number between 2-10')
+                continue
+        else:
+            print("enter a valid number")
+            continue
+    return (racers)
+def init_turtle():
+    screen =turtle.Screen()
+    screen.setup(width,height)
+    screen.title('turtle racing')
+def create_turtles():
+    colours= ['red','green','blue','yellow','orange','black','purple','pink','brown','cyan']
+    random.shuffle(colours)
+    color = colours[:racers]
+    turtles = []
+    spac = 0
+    for i,colors in enumerate(color):
+        khiladi = turtle.Turtle()
+        khiladi.color(colors)
+        khiladi.shape("turtle")
+        khiladi.left(90)
+        khiladi.penup()
+        khiladi.setpos((spac-200),(-height//2)+50)
+        khiladi.pendown()
+        turtles.append(khiladi)
+        spac+=width/racers
+    return (turtles)
+def race_them():
+    turtles = create_turtles()
+    while True:
+        for racer in turtles:
+            distance = random.randrange(1,20)
+            racer.forward(distance)
+            
+            x,y = racer.pos()
+            if y>= (height//2 -10):
+                colors =turtles.index(racer)
+    time.sleep(3)
+racers = khiladi_pucho()
+init_turtle()
+race_them()
+input()
