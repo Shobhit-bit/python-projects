@@ -114,3 +114,26 @@ class Hashtable:
 t = Hashtable()
 t["Ramu Ke bacche"]=15
 print(t["Ramu ke bacche"])
+
+#                              Updated hash function
+      def __getitem__(self, key):
+        arr_index = self.gethash(key)
+        for kv in self.arr[arr_index]:
+            if kv[0] == key:
+                return kv[1]
+            
+    def __setitem__(self, key, val):
+        h = self.gethash(key)
+        found = False
+        for ind, element in enumerate(self.arr[h]):
+            if len(element)==2 and element[0] == key:
+                self.arr[h][ind] = (key,val)
+                found = True
+        if not found:
+            self.arr[h].append((key,val))
+        
+    def __delitem__(self,key):
+        h = self.gethash(key)
+        for ind,elem in enumerate(self.arr[h]):
+            if elem[0] == key:
+                del self.arr[h][ind]
