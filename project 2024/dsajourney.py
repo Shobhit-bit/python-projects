@@ -137,3 +137,30 @@ print(t["Ramu ke bacche"])
         for ind,elem in enumerate(self.arr[h]):
             if elem[0] == key:
                 del self.arr[h][ind]
+#nyc_weather.csv contains new york city weather for first few days in the month of January. Write a program that can answer following,
+# What was the average temperature in first week of Jan
+# What was the maximum temperature in first 10 days of Jan
+f = open("D:/vs code/Projects/Saanp/alu_kachalu.csv","r")
+elements = []
+for line in f:
+    element = line.split(",")[1].strip()
+    elements.append(element)
+elements.pop(0)
+
+avg_temp = sum(float(e) for e in elements)
+avg_temp/=7
+print(avg_temp)
+maxi = max(float(ele) for ele in elements)
+print(maxi)
+# nyc_weather.csv contains new york city weather for first few days in the month of January. Write a program that can answer following,
+# What was the temperature on Jan 9?
+# What was the temperature on Jan 4?
+f = open("D:/vs code/Projects/Saanp/alu_kachalu.csv","r")
+elementss = {}
+for line in f:
+    element = line.split(",")
+    element[1]=element[1].strip()
+    elementss[element[0]]=element[1]
+elementss.pop("date")
+print(elementss.get("Jan 8"))
+print(elementss.get("Jan 4"))
