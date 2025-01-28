@@ -164,3 +164,30 @@ for line in f:
 elementss.pop("date")
 print(elementss.get("Jan 8"))
 print(elementss.get("Jan 4"))
+# Write a function in python that can reverse a string using stack data structure
+from collections import deque
+class stack:
+    def __init__(self):
+        self.container = deque()
+    def push(self,data):
+        self.container.append(data)
+    def pop(self):
+        return(self.container.pop())
+    def peek(self):
+        return(self.container[-1])
+    def is_empty(self):
+        return(len(self.container)==0)
+    def len(self):
+        return(len(self.container))
+
+def revstring(a):
+    stac = stack()
+    l = len(a)
+    revstr = ''
+    for char in a:
+        stac.push(char)
+    for i in range(0,l):
+        revstr += stac.pop()
+    return revstr
+
+print(revstring("alu ke parathe kha ke needh aayi"))
