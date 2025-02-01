@@ -230,3 +230,50 @@ t2.start()
 t1.join()
 time.sleep(1)
 t2.join()
+
+#                                           binary tree
+class tree:
+    def __init__(self,data):
+        self.data=data
+        self.children = []
+        self.parent = None
+    def add_child(self,child):
+        child.parent = self
+        self.children.append(child)
+    def get_level(self):
+        lvl = 0
+        par = self.parent
+        while par:
+            lvl +=1
+            par = par.parent
+        return lvl
+    def print_tree(self):
+        lvl = self.get_level()
+        if lvl>0:
+            print(("  " * lvl) + "|__" + (self.data))
+        else:
+            print(self.data)
+        if self.children:
+            for childr in self.children:
+                childr.print_tree()
+
+def product_hierarcy():
+    Electronics = tree("electronics")
+    lapitopi = tree("laptop")
+    lapitopi.add_child(tree("Mac"))
+    lapitopi.add_child(tree("Predator"))
+    lapitopi.add_child(tree("Thinkpad"))
+    sumaho = tree("Mobile")
+    sumaho.add_child(tree("Oneplus"))
+    sumaho.add_child(tree("Google"))
+    sumaho.add_child(tree("Samsung"))
+    tv = tree("Teli_vision")
+    tv.add_child(tree("LG"))
+    tv.add_child(tree("Onida"))
+    tv.add_child(tree("Sony"))
+    Electronics.add_child(lapitopi)
+    Electronics.add_child(sumaho)
+    Electronics.add_child(tv)
+    Electronics.print_tree()
+
+root = product_hierarcy()
