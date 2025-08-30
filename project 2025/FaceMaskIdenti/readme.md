@@ -1,0 +1,1 @@
+Dataset Used in this detection project is from Kaggle which contain labeled 1305 images(link - https://www.kaggle.com/datasets/ahemateja19bec1025/facemask-dataset),which is trained in the VGG16 model (transfer learning),and camera feed can be used to connect to local camera and detect the mask on live feed.
